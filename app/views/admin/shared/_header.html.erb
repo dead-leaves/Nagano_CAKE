@@ -1,0 +1,60 @@
+<header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
+
+        <div class="container">
+         
+         <%= link_to admin_path, class: "navbar-brand" do %>
+            <span>LOGO</span>
+         <% end %>
+        
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNavDropdown" style>
+           <ul class="navbar-nav ml-auto">
+
+            <% if admin_signed_in? %>
+                
+                <li>
+                  <%= link_to '商品一覧', admin_items_path, class: "nav-link text-light" %>
+                </li>
+
+                <li>
+                  <%= link_to '注文履歴一覧', admin_path, class: "nav-link text-light" %>
+                </li>
+                
+                <li>
+                 <%= link_to 'ジャンル一覧', admin_genres_path, class: "nav-link text-light" %>
+                </li>
+
+                <li>
+                  <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: "nav-link text-light" %>
+                </li>
+
+            <% else %>
+
+                <li>
+                  <%= link_to 'About', about_path, class: "nav-link text-light" %>
+                </li>
+                
+                <li>
+                  <%= link_to '商品一覧', admin_items_path, class: "nav-link text-light" %>
+                </li>
+
+                <li>
+                 <div class="nav-link text-light">新規登録</div>
+                </li>
+
+                <li>
+                  <%= link_to 'ログイン', new_admin_session_path, class: "nav-link text-light" %>
+                </li>
+
+            <% end %>
+
+           </ul>
+          </div>
+        </div>
+      </nav>
+  </header>

@@ -1,0 +1,34 @@
+<%= render "admin/shared/header" %>
+<h1>商品新規登録</h1>
+
+<%= form_with model: @item do |f| %>
+
+<div class="form-group">
+    <label for="item_image">商品画像</label>
+      <%= f.file_field :get_image, accept: "image/*" %>
+</div>
+
+<div class="form-group">
+    <label for="item_name">商品名</label>
+      <%= f.text_field :name, placeholder: "商品名" %>
+</div>
+
+<div class="form-group">
+    <label for="item_introduction">商品説明</label>
+      <%= f.file_area :introduction, placeholder: "ここに説明文を記述します" %>
+</div>
+
+
+      
+</div>
+
+<div class="form-group">
+    <label for="item_price">税抜価格</label>
+      <%= f.text_field :price, placeholder: "1000" %>円
+</div>
+
+<div class="form-group">
+    <%= f.submit "新規登録" %>
+</div>
+
+<% end %>
