@@ -1,3 +1,46 @@
 <%= render "admin/shared/header" %>
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+
+
+<h3 class="my-3 ml-3">会員詳細</h3>
+
+<div class="col-10 ml-3">
+
+    <table class="table">
+      <thead>
+      <div class="d-flex flex-colum">
+       <tr>
+        <th>会員id</th>
+        <th>氏名</th>
+        <th>フリガナ</th>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>電話番号</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+       </tr>
+      </div>
+      </thead>
+
+
+      <tbody>
+
+       <tr>
+        <td><%= @customer.id %></td>
+        <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+        <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+        <td><%= @customer.postal_code %></td>
+        <td><%= @customer.address %></td>
+        <td><%= @customer.telephone_number %></td>
+        <td><%= @customer.email %></td>
+        <td><%= @customer.is_deleted ? '無効' : '有効' %></td>
+       </tr>
+
+      </tbody>
+
+    </table>
+
+
+</div>
+<%= link_to edit_admin_customer_path(@customer.id), class: "btn btn-success" do %>編集する<% end %> <%= link_to admin_path, class: "btn btn-primary" do %>注文履歴一覧を見る<% end %>
+
+

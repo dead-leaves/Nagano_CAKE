@@ -1,3 +1,18 @@
 <%= render "public/shared/header" %>
-<h1>Public::Customers#unsubscribe</h1>
-<p>Find me in app/views/public/customers/unsubscribe.html.erb</p>
+
+<span>本当に退会しますか？</span>
+
+<p>退会すると、会員登録情報や
+これまでの購入履歴が閲覧できなくなります。
+退会する場合は、「退会する」をクリックしてください。</p>
+
+<%= form_with model: @customer, url: customers_withdrawal_path, method: :patch do |f| %>
+
+<%= link_to customers_path, class: "btn btn-primary" do %>退会しない<% end %>
+
+<div class="form-group">
+    <%= f.submit "退会する", class: "btn btn-danger" %>
+</div>
+
+<% end %>
+

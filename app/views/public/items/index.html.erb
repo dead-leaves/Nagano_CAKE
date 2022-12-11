@@ -1,3 +1,13 @@
 <%= render "public/shared/header" %>
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<h1>商品一覧</h1>
+<% @items.each do |item| %>
+
+<%= link_to item_path(item) do %><%= image_tag item.get_image(300, 300) %><% end %><br>
+
+<%= item.name %><br>
+
+¥<%= item.add_tax_price.to_s(:delimited) %><br>
+
+<% end %>
+
+<%= paginate @items %>

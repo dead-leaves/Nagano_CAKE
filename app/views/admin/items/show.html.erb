@@ -1,3 +1,12 @@
 <%= render "admin/shared/header" %>
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<h1>商品詳細</h1>
+
+<%= image_tag @item.get_image(300, 300) %>
+
+商品名 <%= @item.name %>
+商品説明 <%= @item.introduction %>
+ジャンル <%= @item.genre.name %>
+税込価格(税別価格) <%= @item.add_tax_price.to_s(:delimited) %>円(<%= @item.price %>円)
+販売ステータス <%= @item.is_active ? '販売中' : '販売停止中' %>
+
+<%= link_to edit_admin_item_path(@item.id), class: "btn btn-success" do %>編集する<% end %>
