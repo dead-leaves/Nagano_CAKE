@@ -1,2 +1,5 @@
-<h1>Public::Orders#comfirm</h1>
-<p>Find me in app/views/public/orders/comfirm.html.erb</p>
+<%= render "public/shared/header" %>
+<h1>注文情報確認</h1>
+支払方法
+お届け先
+<%= link_to orders_confirm_path, class: "btn btn-success" do %>注文を確定する<% end %>
