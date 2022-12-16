@@ -6,40 +6,41 @@ class Public::CartItemsController < ApplicationController
 
   def update
     @cart_item = CartItem.find(params[:id])
-    @cart_item.update(cart_item_params)
-    redirect_to 'index'
+    @cart_item.update(amount: params[:amount])
+    redirect_to cart_items_path
   end
 
   def destroy
-    cart_item = CartItem.find(params[:id])
-    cart_item.destroy
-    @cart_items = CartItem.all
-    render 'index'
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
+    redirect_to cart_items_path
   end
 
   def destroy_all
-    cart_items = CartItem.all
-    cart_item.destroy_all
-    render 'index'
+    current_customer.cart_items.destroy_all
+    redirect_to cart_items_path
   end
 
   def create
     @cart_item = CartItem.new(cart_item_params)
-    if current_customer.cart_items.find_by(item_id: params[:cart_item] [:item_id] ).present?
-      cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item] [:item_id] )
-      cart_item.amount += params[:cart_item] [:amount].to_i
-      @cart_item.save
-      redirect_to 'index'
+    @cart_items = current_customer.cart_items.all
 
-    else
+      @cart_items.each do |cart_item|
+        if cart_item.item_id == @cart_item.item_id
+          new_amount = cart_item.amount + @cart_item.amount
+          cart_item.update_attribute(:amount, new_amount)
+          @cart_item.delete
+        end
+      end
+
       @cart_item.save
-      @cart_items = current_customer.cart_items.all
-      redirect_to 'index'
+      redirect_to cart_items_path and return
+  end
+
+    private
+
+    def cart_item_params
+    params.require(:cart_item).permit(:item_id, :amount, :customer_id )
     end
-  end
 
-  private
-  def cart_item_parems
-    params.require(:cart_item).permit(:item_id, :amount)
-  end
 end
