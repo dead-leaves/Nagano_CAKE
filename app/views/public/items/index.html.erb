@@ -1,5 +1,5 @@
 <%= render "public/shared/header" %>
-<h1>商品一覧</h1>
+<h1>商品一覧</h1>(全<%= Item.count %>件)<br>
 <% @items.each do |item| %>
 
 <%= link_to item_path(item) do %><%= image_tag item.get_image(300, 300) %><% end %><br>
