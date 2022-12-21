@@ -1,3 +1,39 @@
 <%= render "admin/shared/header" %>
-<h1>注文履歴一覧</h1>
-<p></p>
+
+
+<h3 class="my-3 ml-3">注文履歴一覧</h3>
+
+<div class="col-5 ml-3">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>購入日時</th>
+        <th>購入者</th>
+        <th>注文個数</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td>
+            <%= link_to admin_order_path(order.id) do %>
+            <%= l order.created_at %>
+            <% end %>
+        </td>
+        <td><%= order.customer.full_name %></td>
+        <td>
+            <% @total_amount = 0 %>
+            <% order.order_details.each do |order_detail|  %>
+              <% @total_amount += order_detail.amount %>
+            <% end %>
+            <%= @total_amount %>
+        </td>
+        <td></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<%= paginate @orders %>
+</div>

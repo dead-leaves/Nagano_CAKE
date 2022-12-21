@@ -7,18 +7,11 @@ class Public::OrdersController < ApplicationController
 
   def confirm
    @order = Order.new(order_params)
-   @order.payment_method = params[:order][:payment_method].to_i
+
    @cart_items = current_customer.cart_items
 
    @totel = 0
    @order.shipping_cost = 800
-
-    if params[:order][:payment_method] == "0"
-    @order.payment_method = Order.payment_methods_i18n[:credit_card]
-
-    elsif params[:order][:payment_method] == "1"
-     @order.payment_method = Order.payment_methods_i18n[:transfer]
-    end
 
 
      if params[:order][:select_address] == "1"
@@ -56,12 +49,12 @@ class Public::OrdersController < ApplicationController
      @order_detail = OrderDetail.new
      @order_detail.item_id = cart_item.item_id
      @order_detail.order_id = @order.id
-     @order_detail.price = cart_item.item_id.price
+     @order_detail.price = cart_item.item.price
      @order_detail.amount = cart_item.amount
      @order_detail.making_status = 0
      @order_detail.save!
     end
-    @cart_items.destroy.all
+    @current_customer.cart_items.destroy_all
     redirect_to orders_thanks_path
    else
     render :new
@@ -74,12 +67,13 @@ class Public::OrdersController < ApplicationController
 
   def show
    @order = Order.find(params[:id])
+   @order_details = @order.order_details
   end
 
    private
 
     def order_params
-    params.require(:order).permit( :customer_id, :name, :postal_code, :address, :shipping_cost, :total_payment, :payment_method, :status )
+    params.require(:order).permit( :payment_method, :customer_id, :name, :postal_code, :address, :shipping_cost, :total_payment, :status )
     end
 
 end
