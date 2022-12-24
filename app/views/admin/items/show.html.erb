@@ -1,12 +1,66 @@
 <%= render "admin/shared/header" %>
-<h1>商品詳細</h1>
 
-<%= image_tag @item.get_image(300, 300) %>
+<div class="container">
 
-商品名 <%= @item.name %>
-商品説明 <%= @item.introduction %>
-ジャンル <%= @item.genre.name %>
-税込価格(税別価格) <%= @item.add_tax_price.to_s(:delimited) %>円(<%= @item.price %>円)
-販売ステータス <%= @item.is_active ? '販売中' : '販売停止中' %>
+  <div class="row">
+    <h3>商品詳細</h3>
+  </div>
 
-<%= link_to edit_admin_item_path(@item.id), class: "btn btn-success" do %>編集する<% end %>
+    <div class="row">
+      <div class="col-4">
+        <%= image_tag @item.get_image(300,300) %>
+      </div>
+
+
+      <div class="col-2">
+        <div class="font-weight-bolder">商品名</div>
+        <div class="w-100 mb-3"></div>
+
+        <div class="font-weight-bolder">商品説明</div>
+        <div class="w-100 mb-3"></div>
+
+        <div class="font-weight-bolder">ジャンル</div>
+        <div class="w-100 mb-3"></div>
+
+        <div class="font-weight-bolder">税込価格</div>
+        <div class="w-100"></div>
+        (税別価格)
+        <div class="w-100 mb-3"></div>
+
+        <div class="font-weight-bolder">販売ステータス</div>
+      </div>
+
+
+      <div class="col-6">
+        <%= @item.name %>
+        <div class="w-100 mb-3"></div>
+
+        <%= @item.introduction %>
+        <div class="w-100 mb-3"></div>
+
+        <%= @item.genre.name %>
+        <div class="w-100 mb-3"></div>
+
+        <%= @item.add_tax_price.to_s(:delimited) %>円(<%= @item.price.to_s(:delimited) %>円)
+        <div class="w-100 mb-5"></div>
+
+      <div class="font-weight-bold">
+        <% if @item.is_active == true %>
+          <p class="text-success">販売中</p>
+          <% else %>
+          <p class="text-muted">販売停止中</p>
+        <% end %>
+      </div>
+
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-12">
+      <div class="text-center">
+        <%= link_to edit_admin_item_path(@item.id), class: "btn btn-success" do %>編集する<% end %>
+      </div>
+      </div>
+    </div>
+</div>

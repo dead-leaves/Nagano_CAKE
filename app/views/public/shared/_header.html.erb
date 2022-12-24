@@ -1,13 +1,13 @@
  <header>
-  
+
    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-4">
 
    <div class="container">
-         
-    <%= link_to root_path, class: "navbar-brand" do %>
-     <span>LOGO</span>
-    <% end %>
 
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag 'F641AB6E-209C-4825-A3B4-6E89970EC59B_1_201_a.jpeg', width: 200, height:80 %>
+    <% end %>
+<h3>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -16,11 +16,11 @@
      <ul class="navbar-nav ml-auto">
 
       <% if customer_signed_in? %>
-      
+
         <li>
           <%= link_to 'マイページ', customers_path , class: "nav-link text-light" %>
         </li>
-        
+
         <li>
           <%= link_to '商品一覧', items_path, class: "nav-link text-light" %>
         </li>
@@ -38,7 +38,7 @@
         <li>
          <%= link_to 'About', about_path, class: "nav-link text-light" %>
         </li>
-                
+
         <li>
          <%= link_to '商品一覧', items_path, class: "nav-link text-light" %>
         </li>
@@ -55,6 +55,7 @@
 
      </ul>
      </div>
+ </h3>
     </div>
    </nav>
  </header>

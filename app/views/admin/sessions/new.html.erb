@@ -1,23 +1,56 @@
 <%= render "admin/shared/header" %>
 
-<h2>管理者ログイン</h2>
+<div class="container">
+
+    <div class="row m-5">
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-3 px-6 px-sm-0 mx-auto">
+        <h3 class="bg-secondary text-white text-center">
+          管理者ログイン
+        </h3>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-4 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-4 px-6 px-sm-0 mx-auto"></div>
+    </div>
+
+
+
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label "メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label "パスワード" %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-  
-
-    <div class="actions">
-      <%= f.submit "ログイン"%>
+    <div class="row m-4">
+      <div class="col-sm-12 col-md-8 col-lg-4 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-2 px-6 px-sm-0 mx-auto">
+        <%= f.label "メールアドレス" %>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto">
+        <%= f.email_field :email, autofocus: true, size: 40, placeholder: "sample@example.com", autocomplete: "email" %>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-5 px-6 px-sm-0 mx-auto"></div>
     </div>
-  
-<% end %>
 
-<%= render "admin/shared/links" %>
+
+
+    <div class="row mb-5">
+      <div class="col-sm-12 col-md-8 col-lg-4 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-2 px-6 px-sm-0 mx-auto">
+        <%= f.label "パスワード", class: "ml-3" %>
+      </div>
+       <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto">
+        <%= f.password_field :password, autocomplete: "current-password", size: 40 %>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-5 px-6 px-sm-0 mx-auto"></div>
+    </div>
+
+
+     <div class="row m-4">
+      <div class="col-sm-12 col-md-8 col-lg-4 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-2 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto">
+         <%= f.submit "ログイン", class: "btn btn-primary btn-lg" %>
+         <%= render "admin/shared/links" %>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-5 px-6 px-sm-0 mx-auto"></div>
+    </div>
+<% end %>
+</div>

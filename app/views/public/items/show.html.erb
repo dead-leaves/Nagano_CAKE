@@ -1,25 +1,39 @@
 <%= render "public/shared/header" %>
 
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-lg-5">
+
+         <%= image_tag @item.get_image(400,400) %>
+    </div>
+
+        <div class="col-lg-7">
+            <h2><%= @item.name %></h2><br>
+
+          <div class="font-weight-bolder mb-4">
+            <%= @item.introduction %>
+          </div>
+
+            <div class="d-flex mb-4">
+            <h4>¥<%= @item.add_tax_price.to_s(:delimited) %>円</h4>(税込)
+            </div>
+
+            <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+
+            <%= f.hidden_field :item_id, :value => @item.id  %>
 
 
-<%= image_tag @item.get_image(300, 300) %>
+          <div class="d-flex">
+            <div class="form-group">
+                <%= f.select :amount, *[1..10], prompt: "個数選択", required: true %>
+            </div>
 
-<h2><%= @item.name %></h2>
-<%= @item.introduction %>
-<h4>¥<%= @item.add_tax_price.to_s(:delimited) %>円(税込)</h4>
-
-
-<%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-
-    <%= f.hidden_field :item_id, :value => @item.id  %>
-
-
-
-<div class="form-group">
-    <%= f.select :amount, *[1..10], prompt: "個数選択", required: true %>
+            <div class="form-group ml-4">
+                <%= f.submit "カートに入れる", class: "btn btn-success" %>
+            </div>
+          </div>
+            <% end %>
+        </div>
+    </div>
+  </div>
 </div>
-
-<div class="form-group">
-    <%= f.submit "カートに入れる", class: "btn btn-success" %>
-</div>
-<% end %>

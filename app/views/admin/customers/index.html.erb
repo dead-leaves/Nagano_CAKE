@@ -1,29 +1,52 @@
 <%= render "admin/shared/header" %>
 
+<div class="container">
 
-<h3 class="my-3 ml-3">会員一覧</h3>
+    <div class="row m-4">
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-3 px-6 px-sm-0 mx-auto">
+        <h3 class="bg-secondary text-white text-center">
+          会員一覧
+        </h3>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-4 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-4 px-6 px-sm-0 mx-auto"></div>
+    </div>
 
-<div class="col-5 ml-3">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>会員id</th>
-        <th>氏名</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
-      </tr>
-    </thead>
+    <div class="row">
+    <div class="col"></div>
+    <div class="col-8">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>会員id</th>
+            <th>氏名</th>
+            <th>メールアドレス</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <% @customers.each do |customer| %>
-      <tr>
-        <td><%= customer.id %></td>
-        <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
-        <td><%= customer.email %></td>
-        <td><%= customer.is_deleted ? '無効' : '有効' %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-<%= paginate @customers %>
+        <tbody>
+          <% @customers.each do |customer| %>
+          <tr>
+            <td><%= customer.id %></td>
+            <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
+            <td><%= customer.email %></td>
+
+            <td>
+              <div class="font-weight-bold">
+                <% if customer.is_deleted == false %>
+                    <p class="text-success">有効</p>
+                    <% else %>
+                    <p class="text-muted">無効</p>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @customers %>
+    </div>
+    <div class="col"></div>
 </div>

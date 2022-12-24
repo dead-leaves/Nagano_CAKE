@@ -1,26 +1,47 @@
 <%= render "public/shared/header" %>
 
 
-<h4>ようこそ、ながのCAKEへ！<br>
-このサイトは、ケーキ販売のECサイトになります。<br>
-会員でない方も商品の閲覧はできますが、<br>
-購入には会員登録が必要になります。</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-8 px-6 px-sm-0 mx-auto">
+
+        <div class="card mb-3">
+          <%= image_tag 'B0F2787A-2D12-4956-8372-74C0172A44EC.jpeg', width: 300, height: 600, class: "bd-placeholder-img card-img-top" %>
+            <div class="card-body">
+            <h5 class="card-title">ようこそ、ながのCAKEへ！</h5>
+            <p class="card-text">このサイトは、ケーキ販売のECサイトになります。</p>
+            <p class="card-text">
+                <small class="text-muted">会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。</small>
+            </p>
+            </div>
+        </div>
+
+        </div>
+     </div>
+
+    </div>
 
 
 
 
+        <h2 class="font-weight-bold">新着商品</h2><br>
+    <div class="d-flex justify-content-around">
 
-<h2>新着商品</h2><br>
-<% @items.each do |item| %>
+        <% @items.each do |item| %>
+        <div class= "clearfix">
+          <div class= "float-none">
+            <%= link_to item_path(item) do %><%= image_tag item.get_image(100,100) %><% end %><br>
 
-<%= link_to item_path(item) do %><%= image_tag item.get_image(300, 300) %><% end %><br>
+            <%= item.name %><br>
 
-<%= item.name %><br>
+            ¥<%= item.add_tax_price.to_s(:delimited) %><br>
+          </div>
+        </div>
+        <% end %>
+        <%= link_to "全ての商品を見る>", items_path %>
+    </div>
 
-¥<%= item.add_tax_price.to_s(:delimited) %><br>
-
-<% end %>
-
-
-<% link_to "全ての商品を見る>", items_path %>
+    </div>
+  </div>
+</div>
 

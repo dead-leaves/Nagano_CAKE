@@ -1,13 +1,29 @@
 <%= render "public/shared/header" %>
-<h1>商品一覧</h1>(全<%= Item.count %>件)<br>
-<% @items.each do |item| %>
 
-<%= link_to item_path(item) do %><%= image_tag item.get_image(300, 300) %><% end %><br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-10 px-6 px-sm-0 mx-auto">
 
-<%= item.name %><br>
+        <h3>商品一覧</h3>(全<%= Item.count %>件)<br>
 
-¥<%= item.add_tax_price.to_s(:delimited) %><br>
 
-<% end %>
+          <div class="d-flex justify-content-center">
+            <div class="d-flex flex-wrap">
+                  <% @items.each do |item| %>
+             <div class= "clearfix">
+                <div class= "float-none">
+                    <%= link_to item_path(item) do %><%= image_tag item.get_image(200,200), class: "m-3" %><% end %>
+                      <div class="w-100"></div>
+                    <%= item.name %>
+                      <div class="w-100"></div>
+                     ¥<%= item.add_tax_price.to_s(:delimited) %>
+                </div>
+              </div>
+                    <% end %>
+            </div>
+          </div>
+    </div>
+  </div>
+          <%= paginate @items %>
+</div>
 
-<%= paginate @items %>
