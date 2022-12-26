@@ -1,46 +1,123 @@
 <%= render "admin/shared/header" %>
 
 
-<h3 class="my-3 ml-3">会員詳細</h3>
-
-<div class="col-10 ml-3">
-
-    <table class="table">
-      <thead>
-      <div class="d-flex flex-colum">
-       <tr>
-        <th>会員id</th>
-        <th>氏名</th>
-        <th>フリガナ</th>
-        <th>郵便番号</th>
-        <th>住所</th>
-        <th>電話番号</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
-       </tr>
+<div class="container">
+    <div class="row m-4">
+      <div class="col-sm-12 col-md-8 col-lg-5 px-6 px-sm-0 mx-auto">
+        <h3 class="bg-secondary text-white text-center">
+          <%= @customer.last_name %> <%= @customer.first_name %>さんの会員詳細
+        </h3>
       </div>
-      </thead>
+      <div class="col-sm-12 col-md-8 col-lg-7 px-6 px-sm-0 mx-auto"></div>
+    </div>
 
 
-      <tbody>
-
-       <tr>
-        <td><%= @customer.id %></td>
-        <td><%= @customer.last_name %> <%= @customer.first_name %></td>
-        <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
-        <td><%= @customer.postal_code %></td>
-        <td><%= @customer.address %></td>
-        <td><%= @customer.telephone_number %></td>
-        <td><%= @customer.email %></td>
-        <td><%= @customer.is_deleted ? '無効' : '有効' %></td>
-       </tr>
-
-      </tbody>
-
-    </table>
+    <div class="row mt-5">
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-3 px-6 px-sm-0 mx-auto">
+        会員ID
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-8 px-6 px-sm-0 mx-auto">
+        <%= @customer.id %>
+      </div>
+    </div>
 
 
+    <div class="row my-3">
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-3 px-6 px-sm-0 mx-auto">
+        氏名
+      </div>
+
+      <div class="col-sm-12 col-md-8 col-lg-2 px-6 px-sm-0 mx-auto">
+        <%= @customer.last_name %> <%= @customer.first_name %>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-5 px-6 px-sm-0 mx-auto"></div>
+    </div>
+
+
+    <div class="row my-3">
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-3 px-6 px-sm-0 mx-auto">
+        フリガナ
+      </div>
+
+      <div class="col-sm-12 col-md-8 col-lg-2 px-6 px-sm-0 mx-auto">
+        <%= @customer.last_name_kana %> <%= @customer.first_name_kana %>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-5 px-6 px-sm-0 mx-auto"></div>
+    </div>
+
+
+    <div class="row mt-3">
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-3 px-6 px-sm-0 mx-auto">
+        郵便番号
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-8 px-6 px-sm-0 mx-auto">
+        <%= @customer.postal_code %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-3 px-6 px-sm-0 mx-auto">
+        住所
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-8 px-6 px-sm-0 mx-auto">
+        <%= @customer.address %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-3 px-6 px-sm-0 mx-auto">
+        電話番号
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-8 px-6 px-sm-0 mx-auto">
+        <%= @customer.telephone_number %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-3 px-6 px-sm-0 mx-auto">
+        メールアドレス
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-8 px-6 px-sm-0 mx-auto">
+        <%= @customer.email %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-3 px-6 px-sm-0 mx-auto">
+        会員ステータス
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-8 px-6 px-sm-0 mx-auto">
+        <div class="font-weight-bold">
+                <% if @customer.is_deleted == false %>
+                    <p class="text-success">有効</p>
+                    <% else %>
+                    <p class="text-muted">無効</p>
+                <% end %>
+              </div>
+      </div>
+    </div>
+
+    <div class="row mr-3">
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-3 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-2 px-6 px-sm-0 mx-auto">
+        <%= link_to edit_admin_customer_path(@customer.id), class: "btn btn-success" do %>編集する<% end %>
+      </div>
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-5 px-6 px-sm-0 mx-auto">
+       <%= link_to admin_path, class: "btn btn-primary" do %>注文履歴一覧を見る<% end %>
+      </div>
+    </div>
 </div>
-<%= link_to edit_admin_customer_path(@customer.id), class: "btn btn-success" do %>編集する<% end %> <%= link_to admin_path, class: "btn btn-primary" do %>注文履歴一覧を見る<% end %>
 
 

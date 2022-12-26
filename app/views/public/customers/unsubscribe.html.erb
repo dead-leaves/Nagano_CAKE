@@ -1,18 +1,54 @@
 <%= render "public/shared/header" %>
 
-<span>本当に退会しますか？</span>
 
-<p>退会すると、会員登録情報や
-これまでの購入履歴が閲覧できなくなります。
-退会する場合は、「退会する」をクリックしてください。</p>
+<div class="container">
+  <div class="row m-5"></div>
+  <div class="row m-5"></div>
 
-<%= form_with model: @customer, url: customers_withdrawal_path, method: :patch do |f| %>
+    <div class="row m-5">
+      <div class="col-12">
+        <div class="d-flex justify-content-center">
+          <h4 class="font-weight-bold">本当に退会しますか？</h4>
+        </div>
+      </div>
+    </div>
 
-<%= link_to customers_path, class: "btn btn-primary" do %>退会しない<% end %>
+    <div class="row m-5">
+      <div class="col-12">
+        <div class="d-flex justify-content-center">
+          <div class="text-center">
+            退会すると、会員登録情報や<br>
+            これまでの購入履歴が閲覧できなくなります。<br>
+            退会する場合は、「退会する」をクリックしてください。<br>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<div class="form-group">
-    <%= f.submit "退会する", class: "btn btn-danger" %>
+
+    <%= form_with model: @customer, url: customers_withdrawal_path, method: :patch do |f| %>
+    <div class="row m-5">
+      <div class="clo-sm-12 col-md-8 col-lg-4"></div>
+      <div class="clo-sm-12 col-md-8 col-lg-2">
+        <%= link_to customers_path, class: "btn btn-primary" do %>退会しない<% end %>
+      </div>
+      <div class="clo-sm-12 col-md-8 col-lg-2">
+        <%= f.submit "退会する", class: "btn btn-danger" %>
+      </div>
+      <div class="clo-sm-12 col-md-8 col-lg-4"></div>
+      <% end %>
+    </div>
 </div>
 
-<% end %>
+
+
+
+
+
+
+
+
+
+
+
 

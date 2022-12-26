@@ -1,39 +1,89 @@
 <%= render "public/shared/header" %>
-<h1>マイページ</h1>
-
-登録情報　<%= link_to customers_infomation_edit_path, class: "btn btn-success" do %>編集する<% end %><br>
 
 
-<table class="table">
-      <thead>
-      <div class="d-flex flex-colum">
-       <tr>
-        <th>氏名</th>
-        <th>フリガナ</th>
-        <th>郵便番号</th>
-        <th>住所</th>
-        <th>電話番号</th>
-        <th>メールアドレス</th>
-       </tr>
+<div class="container">
+
+    <div class="row m-4">
+      <div class="col-sm-12 col-md-8 col-lg-1 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-3 px-6 px-sm-0 mx-auto">
+        <h3 class="bg-secondary text-white text-center">
+          マイページ
+        </h3>
       </div>
-      </thead>
+      <div class="col-sm-12 col-md-8 col-lg-4 px-6 px-sm-0 mx-auto"></div>
+      <div class="col-sm-12 col-md-8 col-lg-4 px-6 px-sm-0 mx-auto"></div>
+    </div>
 
 
-      <tbody>
+　　<div class="row">
+　　 <div class="clo-sm-12 col-md-8 col-lg-2">
+　　  <div class="font-weight-bold ml-3">登録情報</div>
+　　 </div>
+     <div class="font-weight-bold clo-sm-12 col-md-8 col-lg-3">
+      <%= link_to customers_infomation_edit_path, class: "btn btn-success mt-3" do %>編集する<% end %>
+     </div>
+     <div class="clo-sm-12 col-md-8 col-lg-7"></div>
+　　</div>
 
-       <tr>
-        <td><%= @customer.last_name %> <%= @customer.first_name %></td>
-        <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
-        <td><%= @customer.postal_code %></td>
-        <td><%= @customer.address %></td>
-        <td><%= @customer.telephone_number %></td>
-        <td><%= @customer.email %></td>
-       </tr>
 
-      </tbody>
+    <div class="row m-3">
+      <div class="col-9">
+       <table class="table table-bordered ml-3">
+        <div class="font-weight-bold ml-3">
+        <thead class="thead-light">
+         <tr>
+          <th>氏名</th>
+          <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+         </tr>
+         <tr>
+          <th>フリガナ</th>
+          <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+         </tr>
+         <tr>
+          <th>郵便番号</th>
+          <td><%= @customer.postal_code %></td>
+         </tr>
+         <tr>
+          <th>住所</th>
+          <td><%= @customer.address %></td>
+         </tr>
+         <tr>
+          <th>電話番号</th>
+          <td><%= @customer.telephone_number %></td>
+         </tr>
+         <tr>
+           <th>メールアドレス</th>
+           <td><%= @customer.email %></td>
+         </tr>
+        </thead>
+       </table>
+      </div>
+    </div>
 
-    </table>
-    
-    配送先      <%= link_to addresses_path, class: "btn btn-primary" do %>一覧を見る<% end %><br>
-    
-    注文履歴    <%= link_to orders_path, class: "btn btn-primary" do %>一覧を見る<% end %><br>
+
+    <div class="row">
+　　 <div class="clo-sm-12 col-md-8 col-lg-2">
+　　  <div class="font-weight-bold ml-3">配送先</div>
+　　 </div>
+     <div class="font-weight-bold clo-sm-12 col-md-8 col-lg-3">
+      <%= link_to addresses_path, class: "btn btn-primary mt-3" do %>一覧を見る<% end %>
+     </div>
+     <div class="clo-sm-12 col-md-8 col-lg-7"></div>
+　　</div>
+　　<div class="row">
+　　 <div class="clo-sm-12 col-md-8 col-lg-2">
+　　  <div class="font-weight-bold ml-3">注文履歴</div>
+　　 </div>
+     <div class="font-weight-bold clo-sm-12 col-md-8 col-lg-3">
+      <%= link_to orders_path, class: "btn btn-primary mt-3" do %>一覧を見る<% end %>
+     </div>
+     <div class="clo-sm-12 col-md-8 col-lg-7"></div>
+　　</div>
+ </div>
+
+
+
+
+
+
+

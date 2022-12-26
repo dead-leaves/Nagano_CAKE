@@ -14,5 +14,13 @@ class Order < ApplicationRecord
   def address_display
     '〒' + postal_code + ' ' + address + ' ' + name
   end
+  
+  def address_br
+    '〒' + postal_code + ' ' + address
+  end
+  
+  def address_br_name
+    name
+  end
 
 end
